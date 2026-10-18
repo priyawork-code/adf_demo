@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "demo-adf-review"
+		},
+		"LS_sqlserver_password": {
+			"value": ""
+		},
+		"LS_ADLS_properties_typeProperties_url": {
+			"value": "https://azurestoragetestpri.dfs.core.windows.net/"
+		},
+		"LS_sqlserver_properties_typeProperties_server": {
+			"value": "db-server-demo-priya.database.windows.net"
+		},
+		"LS_sqlserver_properties_typeProperties_database": {
+			"value": "sql-db-test-priya"
+		},
+		"LS_sqlserver_properties_typeProperties_userName": {
+			"value": "admin-priya-test"
+		},
+		"TGR_EVENT_SIMPLE_properties_PL_FILE_EVENT_parameters_file_name": {
+			"value": "@triggerBody().fileName"
+		},
+		"TGR_EVENT_SIMPLE_properties_typeProperties_scope": {
+			"value": "/subscriptions/038bcd04-a892-46f7-80bb-29015c5632ed/resourceGroups/iz-resource-grp-priya/providers/Microsoft.Storage/storageAccounts/azurestoragetestpri"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
