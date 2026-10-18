@@ -1,0 +1,127 @@
+{
+	"name": "PL_EMAIL_DEMO",
+	"properties": {
+		"activities": [
+			{
+				"name": "Send_Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "prepare logics apps body",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-01.southcentralus.logic.azure.com:443/workflows/fcfac6202829466bbde4f65a6f2409fb/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=pN-HUebHEyBHhuf7z3jGWTcZBSN_0wtAF2j0FGgj-pw",
+					"body": {
+						"value": "@variables('logic_apps_body')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "prepare logics apps body",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "email_subject",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "prepare_email_body",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "logic_apps_body",
+					"value": {
+						"value": "{\"email_recepient\":\"@{pipeline().parameters.email_recepient}\",\n\"subject\":\"@{variables('email_subject')}\",\n\"body\":\"@{variables('email_body')}\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "email_subject",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "email_subject",
+					"value": {
+						"value": "@{pipeline().parameters.table_name} - @{pipeline().parameters.status}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "prepare_email_body",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "email_body",
+					"value": {
+						"value": "the table @{pipeline().parameters.table_name} has been completed ans the status is @{pipeline().parameters.status}",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			},
+			"email_recepient": {
+				"type": "string"
+			},
+			"status": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"logic_apps_body": {
+				"type": "String"
+			},
+			"email_subject": {
+				"type": "String"
+			},
+			"email_body": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-10-07T09:42:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

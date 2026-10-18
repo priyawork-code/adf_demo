@@ -1,0 +1,21 @@
+{
+	"name": "demo-adf-review",
+	"properties": {
+		"globalParameters": {
+			"email_recepient": {
+				"type": "string",
+				"value": "priya1900work@gmail.com"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "indiasouthcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0d9458b4-6dbf-4184-b977-cdffad4ccde2",
+		"tenantId": "9c428d32-4789-4923-9b31-d6a6f8d9a649"
+	}
+}
