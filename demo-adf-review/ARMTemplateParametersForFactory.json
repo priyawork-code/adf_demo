@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "demo-adf-review"
 		},
-		"LS_sqlserver_password": {
-			"value": ""
-		},
 		"LS_ADLS_properties_typeProperties_url": {
 			"value": "https://azurestoragetestpri.dfs.core.windows.net/"
 		},
@@ -25,6 +22,9 @@
 		},
 		"TGR_EVENT_SIMPLE_properties_typeProperties_scope": {
 			"value": "/subscriptions/038bcd04-a892-46f7-80bb-29015c5632ed/resourceGroups/iz-resource-grp-priya/providers/Microsoft.Storage/storageAccounts/azurestoragetestpri"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://demo-priya-adf.vault.azure.net/"
 		}
 	}
 }
