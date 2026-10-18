@@ -102,7 +102,7 @@
 			"table_name": {
 				"type": "string"
 			},
-			"email_recepients": {
+			"email_recepient": {
 				"type": "string"
 			},
 			"status": {
